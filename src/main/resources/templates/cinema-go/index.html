@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Fast and Furious</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- stylesheets -->
+    <link href="cinema-go/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="cinema-go/css/colour.css" rel="stylesheet" type="text/css" />
+    <!-- modernizr enables HTML5 elements and feature detects -->
+    <script type="text/javascript" src="cinema-go/js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+<div id="main">
+
+    <!-- begin header -->
+    <header>
+        <div id="logo"><h1><a href="#">CinemaGO</a></h1></div>
+        <nav>
+            <ul class="sf-menu" id="nav">
+                <li class="selected"><a href="index.html">Home</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li><a href="cinema/register">Register</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="logout.html">Logout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- end header -->
+
+    <!-- begin content -->
+    <div id="site_content">
+        <ul class="slideshow">
+            <li class="show"><img width="950" height="450" src="images/movies2.jpg"></li>
+            <li><img width="950" height="450" src="images/movies3.jpg"></li>
+            <li><img width="950" height="450" src="images/movies4.jpg"></li>
+            <li><img width="950" height="450" src="images/movies5.jpg"></li>
+        </ul>
+    </div>
+    <!-- end content -->
+
+    <!-- begin footer -->
+    <footer>
+        <p>Copyright &copy; CinemaGO</p>
+    </footer>
+    <!-- end footer -->
+
+</div>
+<!-- javascript at the bottom for fast page loading -->
+<script type="text/javascript" src="cinema-go/js/jquery.min.js"></script>
+<script type="text/javascript" src="cinema-go/js/jquery.easing-sooper.js"></script>
+<script type="text/javascript" src="cinema-go/js/jquery.sooperfish.js"></script>
+<script type="text/javascript" src="cinema-go/js/image_fade.js"></script>
+<!-- initialise sooperfish menu -->
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('ul.sf-menu').sooperfish();
+    });
+  </script>
+</body>
+</html>
