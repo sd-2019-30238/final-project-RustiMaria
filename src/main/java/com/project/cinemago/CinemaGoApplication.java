@@ -10,4 +10,6 @@ public class CinemaGoApplication {
 		SpringApplication.run(CinemaGoApplication.class, args);
 	}
 
+    public static class Movie {
+    }
 }

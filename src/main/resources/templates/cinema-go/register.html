@@ -1,60 +1,204 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register Page</title>
+    <!--Made with love by Mutiullah Samim -->
+
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 500px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.register_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+</style>
+</head>
 <body>
 
-<form action="/cinema/register" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
-    <h2 class="w3-center">Create account</h2>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/cinema">
+        <img src="http://downloadicons.net/sites/default/files/3D-Movies-Icon-665384.png" alt="logo" style="width:40px;">
+    </a>
 
-    <div class="w3-row w3-section">
-        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-        <div class="w3-rest">
-            <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema">Movies</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema/register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema/login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema">Logout</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema">Cart</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/cinema">Messages</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3>Register</h3>
+            </div>
+            <div class="card-body">
+                <form method = "post" action = "/cinema/register">
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="first name" name="firstName">
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="last name" name="lastName">
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="username" name="username">
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Email" name="email">
+                    </div>
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="address" name="address">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Register" class="btn float-right register_btn">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+            </div>
         </div>
     </div>
-
-    <div class="w3-row w3-section">
-        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-        <div class="w3-rest">
-            <input class="w3-input w3-border" name="last" type="text" placeholder="Last Name">
-        </div>
-    </div>
-
-    <div class="w3-row w3-section">
-        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-        <div class="w3-rest">
-            <input class="w3-input w3-border" name="username" type="text" placeholder="Username">
-        </div>
-    </div>
-
-    <div class="w3-row w3-section">
-        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-        <div class="w3-rest">
-            <input class="w3-input w3-border" name="password" type="text" placeholder="Password">
-        </div>
-    </div>
-
-    <div class="w3-row w3-section">
-        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-        <div class="w3-rest">
-            <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
-        </div>
-    </div>
-
-    <div class="w3-row w3-section">
-        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-        <div class="w3-rest">
-            <input class="w3-input w3-border" name="address" type="text" placeholder="Address">
-        </div>
-    </div>
-
-    <p class="w3-center">
-        <button class="w3-button w3-section w3-blue w3-ripple"> Register </button>
-    </p>
-</form>
-
+</div>
 </body>
 </html>

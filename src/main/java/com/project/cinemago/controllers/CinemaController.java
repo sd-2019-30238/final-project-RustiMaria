@@ -11,7 +11,7 @@ public class CinemaController {
     @RequestMapping(value = "")
     public String index(Model model){
         //model.addAttribute("title", "CinemaGO");
-        return "cinema-go/menu";
+        return "cinema-go/index";
     }
 
 }
