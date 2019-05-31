@@ -2,15 +2,16 @@ package com.project.cinemago.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Customer {
+public class User {
 
     @Id
-    @GeneratedValue
-    private int customerId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int userId;
     @NotNull
     private String firstName;
     @NotNull
@@ -24,9 +25,9 @@ public class Customer {
     @NotNull
     private String address;
 
-    public Customer(){}
+    public User(){}
 
-    public Customer(String firstName, String lastName, String username, String password, String email, String address) {
+    public User(String firstName, String lastName, String username, String password, String email, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -36,7 +37,7 @@ public class Customer {
     }
 
     public int getId() {
-        return customerId;
+        return userId;
     }
 
     public String getFirstName() {

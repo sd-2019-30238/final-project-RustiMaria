@@ -10,7 +10,6 @@ public class CinemaController {
 
     @RequestMapping(value = "")
     public String index(Model model){
-        //model.addAttribute("title", "CinemaGO");
         return "cinema-go/index";
     }
 
