@@ -72,7 +72,7 @@ body {
 </style>
 </head>
 
-<body style="background-color:LightGray;">
+<form style="background-color:LightGray;">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
     <!-- Brand/logo -->
@@ -106,29 +106,21 @@ body {
     </ul>
 </nav>
 
+<form method = "post" action = "/cinema/buy">
+
 <div class="row">
     <div class="column" th:each="movie : ${movies}">
-        <img th:src="${movie.movieImage}" style="width:100%" th:alt="${movie.movieName}"/>
-        <p align="center"th:text="${movie.movieName}"></p>
+        <img th:src="${movie.movieImage}" width="350" height="500"/>
+        <p align="center" th:text="${movie.movieName}"></p>
         <p align="center" th:text="${movie.airDate}"></p>
         <p align="center" th:text="${movie.duration}"></p>
+        <input th:type="hidden" th:name="movieId" th:value="${movie.movieId}"/>
         <p align="center">
-            <input type="submit" value="Register" class="btn float-center submit_btn">
+            <a href="/cinema/buy">Buy ticket</a>
         </p>
     </div>
 </div>
-
-   <!-- <ul>
-        <li th:each="movie : ${movies}" >
-            <ul>
-                <li th:text="${movie.movieName}"></li>
-                <li th:text="${movie.movieImage}"></li>
-                <li th:text="${movie.airDate}"></li>
-                <li th:text="${movie.duration}"></li>
-                <li th:text="${movie.availableSeats}"></li>
-            </ul>
-        </li>
-    </ul> -->
+</form>
 
 <div class="container">
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
@@ -137,16 +129,7 @@ body {
 </div>
 
 <script>
-function myFunction(imgs) {
-  //var expandImg = document.getElementById("expandedImg");
-  //var imgText = document.getElementById(imgs);
-  //document.getElementById("${movie.movieName}").innerHTML = "${movie.movieName}";
-  //expandImg.src = imgs.src;
-  //imgText.innerHTML = imgs.alt;
-  //expandImg.parentElement.style.display = "block";
-  //window.location.href = "/cinema/login"
-   window.location.href = "/cinema/${imgs}"
-}
+
 </script>
 
 </body>

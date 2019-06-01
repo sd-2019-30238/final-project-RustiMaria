@@ -1,15 +1,16 @@
 package com.project.cinemago.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.project.cinemago.observer.Observable;
+import com.project.cinemago.observer.Observer;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Movie {
+public class Movie extends Observable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,18 +22,21 @@ public class Movie {
     @NotNull
     private Date airDate;
     @NotNull
-    private Time duration;
+    private String duration;
     @NotNull
-    private int availableSeats;
+    private String hallType;
+
+    @Transient
+    private List<Observer> observers = new ArrayList<Observer>();
 
     public Movie(){}
 
-    public Movie(@NotNull String movieName, @NotNull String movieImage, @NotNull Date airDate, @NotNull Time duration, @NotNull int availableSeats) {
+    public Movie(@NotNull String movieName, @NotNull String movieImage, @NotNull Date airDate, String duration, @NotNull String hallType) {
         this.movieName = movieName;
         this.movieImage = movieImage;
         this.airDate = airDate;
         this.duration = duration;
-        this.availableSeats = availableSeats;
+        this.hallType = hallType;
     }
 
     public int getMovieId() {
@@ -60,22 +64,50 @@ public class Movie {
     }
 
     public void setAirDate(@NotNull Date airDate) {
+        this.notifyObservers("The air date for movie " + this.getMovieName() + " has changed from " + this.getAirDate() + " to " + airDate);
         this.airDate = airDate;
     }
 
-    public @NotNull Time getDuration() {
+    public @NotNull String getDuration() {
         return duration;
     }
 
-    public void setDuration(@NotNull Time duration) {
+    public void setDuration(@NotNull String duration) {
         this.duration = duration;
     }
 
-    public int getAvailableSeats() {
-        return availableSeats;
+    public String getHallType() {
+        return hallType;
     }
 
-    public void setAvailableSeats(int availableSeats) {
-        this.availableSeats = availableSeats;
+    public void setHallType(String hallType) {
+        this.notifyObservers("The hall for movie " + this.getMovieName() + " has changed from " + this.getHallType() + " to " + hallType);
+        this.hallType = hallType;
     }
+
+    public List<Observer> getObservers() {
+        return observers;
+    }
+
+    public void setObservers(List<Observer> observers) {
+        this.observers = observers;
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(String message) {
+        for(Observer obs: observers) {
+            obs.update(message);
+        }
+    }
+
 }

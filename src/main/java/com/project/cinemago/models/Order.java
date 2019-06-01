@@ -1,8 +1,12 @@
 package com.project.cinemago.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.sql.Date;
 
 @Entity
 public class Order implements Serializable {
@@ -16,6 +20,8 @@ public class Order implements Serializable {
     private int userId;
     @NotNull
     private float total;
+    @NotNull
+    private Date orderDate;
 
     public Order(){}
 
@@ -41,5 +47,13 @@ public class Order implements Serializable {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 }

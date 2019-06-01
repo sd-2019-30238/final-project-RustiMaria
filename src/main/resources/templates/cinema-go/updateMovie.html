@@ -45,8 +45,38 @@
     </ul>
 </nav>
 
-<form method = "post" action = "/cinema/admin">
+<form method = "post" action = "/cinema/tasks">
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <table border="0" align = "center">
+        <tr>
+            <td>The id of the movie you want to update</td>
+            <td><input type="text" name="movieId" required /></td>
+        </tr>
+        <tr>
+            <td>Air date</td>
+            <td><input type="date" name="airDate" required /></td>
+        </tr>
+        <tr>
+            <td>Hall Type</td>
+            <td><select name = "hallType">
+                <option value="Type A">Type A - 80 seats</option>
+                <option value="Type B">Type B - 90 seats</option>
+                <option value="Type C">Type C - 100 seats</option>
+            </select></td>
+        </tr>
+        <br>
+        <br>
+        <tr>
+            <td colspan="2"><input type="submit" name="updateMovie" value="Update">
+            </td>
+        </tr>
+    </table>
 
 
 </form>

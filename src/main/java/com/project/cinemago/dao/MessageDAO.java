@@ -1,6 +1,6 @@
 package com.project.cinemago.dao;
 
-import com.project.cinemago.models.Order;
+import com.project.cinemago.models.Message;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -10,9 +10,9 @@ import java.util.List;
 
 @Repository
 @Transactional
-public interface OrderDAO extends CrudRepository<Order, Integer> {
+public interface MessageDAO extends CrudRepository<Message, Integer> {
 
-    @Query("select o from Order o where o.orderId = ?1")
-    public List<Order> findOrdersByUserId(int id);
+    @Query("select m from Message m where m.userId = ?1")
+    public Iterable<Message> findByUserId(int id);
 
 }

@@ -3,31 +3,32 @@ package com.project.cinemago.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping(value = "cinema/admin")
+@RequestMapping("cinema/admin")
 public class AdminController {
 
-    @RequestMapping(value = "cinema/admin", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String showTasks(){
         return "cinema-go/admin";
     }
 
-    @RequestMapping(value = "cinema/admin", method = RequestMethod.POST)
-    public String manageTasks(@RequestParam String add, @RequestParam String delete, @RequestParam String update, @RequestParam String reports){
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    public String manageTasks(HttpServletRequest request){
 
-        if(!add.isEmpty()){
+        if(request.getParameter("add") != null){
             return "cinema-go/addMovie";
         }
-        if(!update.isEmpty()){
+        if(request.getParameter("update") != null){
             return "cinema-go/updateMovie";
         }
-        if(!delete.isEmpty()){
+        if(request.getParameter("delete") != null){
             return "cinema-go/deleteMovie";
         }
-        if(!reports.isEmpty()){
-            return "cinema-go/reports";
+        if(request.getParameter("reports") != null){
+            return "redirect:/cinema/reports";
         }
         return "cinema-go/admin";
     }

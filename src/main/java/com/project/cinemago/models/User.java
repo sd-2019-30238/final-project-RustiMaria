@@ -1,13 +1,17 @@
 package com.project.cinemago.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.project.cinemago.cqrs.commands.ICommand;
+import com.project.cinemago.cqrs.commands.message.InsertMessageCommand;
+import com.project.cinemago.cqrs.mediator.Mediator;
+import com.project.cinemago.observer.Observer;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class User {
+public class User implements Observer, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -87,4 +91,13 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public void update(String msg){
+        Message message = new Message(msg, this.userId);
+        Mediator mediator = new Mediator();
+        ICommand command = new InsertMessageCommand(message);
+        mediator.mediate(command);
+    }
+
 }
