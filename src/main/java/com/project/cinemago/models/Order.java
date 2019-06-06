@@ -1,14 +1,12 @@
 package com.project.cinemago.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
+@Table(name = "orders")
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,16 +23,22 @@ public class Order implements Serializable {
 
     public Order(){}
 
+    public Order(int userId, float total, Date date){
+        this.userId = userId;
+        this.total = total;
+        this.orderDate = date;
+    }
+
     public int getOrderId() {
-        return orderId;
+        return this.orderId;
     }
 
     public int getUserId() {
-        return userId;
+        return this.userId;
     }
 
     public float getTotal() {
-        return total;
+        return this.total;
     }
 
     public void setOrderId(int orderId) {
@@ -50,7 +54,7 @@ public class Order implements Serializable {
     }
 
     public Date getOrderDate() {
-        return orderDate;
+        return this.orderDate;
     }
 
     public void setOrderDate(Date orderDate) {

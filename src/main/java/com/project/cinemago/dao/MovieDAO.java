@@ -14,4 +14,7 @@ public interface MovieDAO extends CrudRepository<Movie, Integer> {
     @Query("select m from Movie m where m.movieId = ?1")
     public Movie findMovieById(int id);
 
+    @Query("select m from Movie m where m.movieName = ?1")
+    public Movie findMovieByName(String name);
+
 }

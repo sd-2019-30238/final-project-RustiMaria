@@ -44,6 +44,8 @@ public class TasksController {
             String movieImage = request.getParameter("movieImage");
             String airDateString = request.getParameter("airDate");
             String duration = request.getParameter("duration");
+            String priceS = request.getParameter("price");
+            float price = Float.parseFloat(priceS);
             String hallType = request.getParameter("hallType");
 
             Date airDate = null;
@@ -54,7 +56,7 @@ public class TasksController {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            Movie movie = new Movie(movieName, movieImage, airDate, duration, hallType.substring(hallType.length()-1, hallType.length()));
+            Movie movie = new Movie(movieName, movieImage, airDate, duration, price, hallType.substring(hallType.length()-1, hallType.length()));
             ICommand command = new InsertMovieCommand(movie);
             //mediator.mediate(command);
             movieDAO.save(movie);
@@ -63,6 +65,8 @@ public class TasksController {
         if(request.getParameter("updateMovie") != null){
             String idS = request.getParameter("movieId");
             int movieId = Integer.parseInt(idS);
+            String priceS = request.getParameter("price");
+            float price = Float.parseFloat(priceS);
             String airDateString = request.getParameter("airDate");
             String hall = request.getParameter("hallType");
             Date airDate = null;
@@ -77,6 +81,7 @@ public class TasksController {
             Movie movie = movieDAO.findMovieById(movieId);
             movie.setAirDate(airDate);
             movie.setHallType(hall.substring(hall.length()-1, hall.length()));
+            movie.setPrice(price);
             movieDAO.deleteById(movieId);
             movieDAO.save(movie);
         }

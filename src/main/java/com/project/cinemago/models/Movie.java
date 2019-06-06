@@ -24,18 +24,24 @@ public class Movie extends Observable {
     @NotNull
     private String duration;
     @NotNull
+    private float price;
+    @NotNull
     private String hallType;
 
     @Transient
     private List<Observer> observers = new ArrayList<Observer>();
 
+    @Transient
+    private int[][] seats = new int[10][10];
+
     public Movie(){}
 
-    public Movie(@NotNull String movieName, @NotNull String movieImage, @NotNull Date airDate, String duration, @NotNull String hallType) {
+    public Movie(@NotNull String movieName, @NotNull String movieImage, @NotNull Date airDate, String duration, @NotNull float price, @NotNull String hallType) {
         this.movieName = movieName;
         this.movieImage = movieImage;
         this.airDate = airDate;
         this.duration = duration;
+        this.price = price;
         this.hallType = hallType;
     }
 
@@ -76,6 +82,14 @@ public class Movie extends Observable {
         this.duration = duration;
     }
 
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
     public String getHallType() {
         return hallType;
     }
@@ -87,6 +101,14 @@ public class Movie extends Observable {
 
     public List<Observer> getObservers() {
         return observers;
+    }
+
+    public int[][] getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int[][] seats) {
+        this.seats = seats;
     }
 
     public void setObservers(List<Observer> observers) {

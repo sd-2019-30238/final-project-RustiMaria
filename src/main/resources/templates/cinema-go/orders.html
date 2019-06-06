@@ -10,8 +10,39 @@
 
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <style>
+table {
+	width: 100%;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 15px;
+	text-align: left;
+}
+
+table#t01 tr:nth-child(even) {
+	background-color: #eee;
+}
+
+table#t01 tr:nth-child(odd) {
+	background-color: #fff;
+}
+
+table#t01 th {
+	background-color: black;
+	color: white;
+}
+</style>
+
 </head>
-<body style="background-color: LightGray;">
+
+<body style="background-color:LightGray;">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
     <!-- Brand/logo -->
@@ -45,23 +76,25 @@
     </ul>
 </nav>
 
-<form method = "post" action = "/cinema/tasks">
+<br>
+<br>
+
+<form method = "post" action = "/cinema/orders">
 
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <table border="0" align = "center">
+    <h2 align = "center">Your orders</h2>
+    <table id="t01">
         <tr>
-            <td>The id of the movie you want to delete</td>
-            <td><input type="text" name="movieId" required/></td>
+            <th>Placed on</th>
+            <th>Total</th>
+            <th>Feedback</th>
         </tr>
-        <br>
-        <br>
-        <tr>
-            <td colspan="2"><input type="submit" name="deleteMovie" value="Delete">
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.getOrderDate()}"></td>
+            <td th:text="${order.getTotal()}"></td>
+            <td><div class="slidecontainer">
+                <p>From 1 to 100, please tell us how satisfied are you with our services.</p>
+                <input type="range" min="1" max="100" value="50"></div>
             </td>
         </tr>
     </table>

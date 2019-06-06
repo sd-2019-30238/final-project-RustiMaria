@@ -12,7 +12,7 @@ import java.util.List;
 @Transactional
 public interface OrderDAO extends CrudRepository<Order, Integer> {
 
-    @Query("select o from Order o where o.orderId = ?1")
+    @Query("select o from Order o where o.userId = ?1")
     public List<Order> findOrdersByUserId(int id);
 
 }

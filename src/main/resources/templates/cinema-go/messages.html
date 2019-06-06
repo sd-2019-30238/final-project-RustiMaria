@@ -68,7 +68,7 @@ table#t01 th {
             <a class="nav-link" href="/cinema/logout">Logout</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/cinema/cart">Cart</a>
+            <a class="nav-link" href="/cinema/orders">Orders</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/cinema/messages">Messages</a>
@@ -83,7 +83,7 @@ table#t01 th {
 
     <table id="t01">
         <tr>
-            <th aign = "center">Messages</th>
+            <th align = "center">Messages</th>
         </tr>
         <tr th:each="msg : ${messages}">
                 <td th:text="${msg.getMessage()}"></td>

@@ -72,7 +72,7 @@ body {
 </style>
 </head>
 
-<form style="background-color:LightGray;">
+<body style="background-color:LightGray;">
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center">
     <!-- Brand/logo -->
@@ -98,7 +98,7 @@ body {
             <a class="nav-link" href="/cinema/logout">Logout</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/cinema/cart">Cart</a>
+            <a class="nav-link" href="/cinema/orders">Orders</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/cinema/messages">Messages</a>
@@ -106,21 +106,19 @@ body {
     </ul>
 </nav>
 
-<form method = "post" action = "/cinema/buy">
-
 <div class="row">
     <div class="column" th:each="movie : ${movies}">
         <img th:src="${movie.movieImage}" width="350" height="500"/>
         <p align="center" th:text="${movie.movieName}"></p>
         <p align="center" th:text="${movie.airDate}"></p>
         <p align="center" th:text="${movie.duration}"></p>
-        <input th:type="hidden" th:name="movieId" th:value="${movie.movieId}"/>
+        <p align="center" th:text="${movie.price}" ></p>
+        <input type="hidden" name="movieId" th:value="${movie.movieId}"/>
         <p align="center">
-            <a href="/cinema/buy">Buy ticket</a>
+            <a th:href="@{/cinema/buy/{movieId}(movieId=${movie.getMovieId()})}">Buy ticket</a>
         </p>
     </div>
 </div>
-</form>
 
 <div class="container">
     <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
